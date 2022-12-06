@@ -1,4 +1,4 @@
-# Text2Pdf
+# custom_textformfield
 Custom textformfield with options to add leading and trailing text, appended at begining and end of input
 
 ## Example
