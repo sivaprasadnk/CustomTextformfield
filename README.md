@@ -1,7 +1,9 @@
 # Text2Pdf
 Custom textformfield with options to add leading and trailing text, appended at begining and end of input
 
-![Image](https://github.com/sivaprasadnk/CustomTextformfield/blob/master/screenshot/screenshot.gif)
+## Example
+
+![example](https://github.com/sivaprasadnk/CustomTextformfield/blob/master/screenshot/screenshot.gif)
 
 
 ## Getting Started
