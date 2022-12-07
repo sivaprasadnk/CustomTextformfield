@@ -3,7 +3,7 @@ Custom textformfield with options to add leading and trailing text, appended at 
 
 ## Example
 
-![](https://github.com/sivaprasadnk/CustomTextformfield/blob/master/screenshot/screenshot.gif)
+![example](https://github.com/sivaprasadnk/CustomTextformfield/blob/master/screenshot/a.gif)
 
 
 ## Getting Started

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     required this.onChanged,
+    required this.focusNode,
     super.key,
     this.leadingText,
     this.trailingText,
@@ -21,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
 
   final Function(String) onChanged;
   final TextEditingController? controller;
+  final FocusNode focusNode;
   final String? leadingText;
   final String? trailingText;
   final Widget? suffixIcon;
@@ -33,47 +35,51 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: padding,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: Border.all(color: borderColor, width: 1),
-      ),
-      child: Row(
-        children: [
-          if (leadingText != null && leadingText!.isNotEmpty)
-            Text(
-              leadingText!,
-              style: const TextStyle(fontSize: 17, color: Colors.grey),
-            ),
-          IntrinsicWidth(
-            child: TextFormField(
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
+    return GestureDetector(
+      onTap: () => focusNode.requestFocus(),
+      child: Container(
+        margin: padding,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        height: height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: Border.all(color: borderColor, width: 1),
+        ),
+        child: Row(
+          children: [
+            if (leadingText != null && leadingText!.isNotEmpty)
+              Text(
+                leadingText!,
+                style: const TextStyle(fontSize: 17, color: Colors.grey),
               ),
-              autofocus: true,
-              controller: controller,
-              onChanged: (val) {
-                onChanged(val);
-              },
-              keyboardType: textInputType,
-              inputFormatters: inputFormatters,
+            IntrinsicWidth(
+              child: TextFormField(
+                focusNode: focusNode,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                ),
+                autofocus: true,
+                controller: controller,
+                onChanged: (val) {
+                  onChanged(val);
+                },
+                keyboardType: textInputType,
+                inputFormatters: inputFormatters,
+              ),
             ),
-          ),
-          if (trailingText != null)
-            Text(
-              trailingText!,
-              style: const TextStyle(fontSize: 17, color: Colors.grey),
-            ),
-          const Spacer(),
-          if (suffixIcon != null) suffixIcon!
-        ],
+            if (trailingText != null)
+              Text(
+                trailingText!,
+                style: const TextStyle(fontSize: 17, color: Colors.grey),
+              ),
+            const Spacer(),
+            if (suffixIcon != null) suffixIcon!
+          ],
+        ),
       ),
     );
   }

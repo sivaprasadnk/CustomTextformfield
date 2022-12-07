@@ -29,6 +29,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  final FocusNode ctrlFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           const SizedBox(height: 70),
           CustomTextFormField(
+            focusNode: ctrlFocusNode,
             padding: const EdgeInsets.all(10),
             onChanged: (val) {},
             leadingText: 'https://',
